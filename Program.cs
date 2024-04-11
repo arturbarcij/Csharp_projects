@@ -1,31 +1,24 @@
 ﻿using System;
-using Library;
-
-namespace TUI {
-    internal class MainClass {
-        private static void PrintArray(object[] array) {
-            Console.WriteLine("Test Array: {0}", Show.Array(array));
+class MAINCLASS {
+static void Main () {
+//Switch expression with Tuples 
+static string RockPaperScissors(string first, string second)
+ 
+        { 
+           return (first, second) switch
+            { 
+                ("rock", "paper") => "Paper wins.",
+                ("rock", "scissors") => "Rock wins.", 
+                ("paper", "rock") => "Paper wins.",
+                ("paper", "scissors") => "Scissors wins.", 
+                ("scissors", "rock") => "Rock wins.", 
+                ("scissors", "paper") => "Scissors wins.", 
+                (_, _) => "Tie.",
+            }; 
         }
+    Console.WriteLine(RockPaperScissors("rock", "paper"));
 
-        private static void TestArray(IComparable[] array) {
-            MainClass.PrintArray(array);
-
-            for (var i = 0; i <= 11; i++) {
-                var result = Search.Binary(array, i);
-                if (result == -1) {
-                    Console.WriteLine("{0} was not found.", i);
-                } else {
-                    Console.WriteLine("{0} was found in index {1}.", i, result);
-                }
-            }
-        }
-
-        public static void Main(string[] args) {
-            var gen = new Generator();
-
-            MainClass.TestArray(gen.NextArray(10, 10));
-            MainClass.TestArray(gen.NextArray(10, 10));
-            MainClass.TestArray(gen.NextArray(10, 10));
-        }
     }
 }
+
+// Troelsen, Andrew; Japikse, Phillip. Pro C# 9 with .NET 5 (p. 272). Apress. Kindle Edition.
